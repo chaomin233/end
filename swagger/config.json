@@ -1,0 +1,7 @@
+{
+  "type": "swagger",
+  "token": "be9dba808b6011e9ad31f9fada3998dc",
+  "file": "swagger.json",
+  "merge": true,
+  "server": "http://39.98.50.163:3000"
+}

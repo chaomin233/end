@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abcd.student.mapper.StudentMapper">
+    <resultMap type="com.abcd.student.domain.dto.StudentDto" id="StudentDtoResult">
+        <result property="id" column="id" />
+        <result property="studentId" column="student_id" />
+        <result property="studentName" column="student_name" />
+        <result property="studentSex" column="student_sex" />
+        <result property="studentNumber" column="student_number" />
+    </resultMap>
+    <select id="findList" resultType="com.abcd.student.domain.eo.Student">
+        SELECT * FROM student WHERE 1=1
+    </select>
+
+    <update id="deleteByIds">
+        UPDATE student set dr=1 where id in
+        <foreach collection="ids" index="index" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </update>
+</mapper>
