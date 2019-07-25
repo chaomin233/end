@@ -1,19 +1,13 @@
 #!/bin/bash
-cd `dirname $0`
 
-img_mvn="maven:3.3.3-jdk-8"                 # docker image of maven
-m2_cache=~/.m2                              # the local maven cache dir
-proj_home=$PWD                              # the project root dir
-
-git pull  # should use git clone https://name:pwd@xxx.git
-
-echo "use docker maven"
+echo "使用 Docker-Maven 打包项目"
 docker run --rm \
-   -v $m2_cache:/root/.m2 \
-   -v $proj_home:/usr/src/mymaven \
-   -w /usr/src/mymaven $img_mvn mvn clean package -U -Dmaven.test.skip=true
+   -v ~/.m2:/root/.m2 \
+   -v $PROJECT_HOME:/usr/src/mymaven \
+   -w /usr/src/mymaven \
+   maven:3.3.3-jdk-8 mvn clean package -U
 
-mv $proj_home/abcd-provider/target/abcd-provider-*.jar $proj_home/abcd-provider/target/demo.jar
+mv $PROJECT_HOME/*-provider/target/*-provider-*.jar $PROJECT_HOME/ddd-provider/target/demo.jar
 
 echo "构建镜像"
 docker build -t $APP_NAME:v$VERSION .
