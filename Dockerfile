@@ -3,4 +3,4 @@ FROM fabric8/java-jboss-openjdk8-jdk
 
 USER root
 
-COPY deepexi-student-center-provider/target/demo.jar /home/
+COPY abcd-provider/target/demo.jar /home/
