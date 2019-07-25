@@ -7,7 +7,7 @@ docker run --rm \
    -w /usr/src/mymaven \
    maven:3.3.3-jdk-8 mvn clean package -U
 
-mv $PROJECT_HOME/*-provider/target/*-provider-*.jar $PROJECT_HOME/ddd-provider/target/demo.jar
+mv $PROJECT_HOME/*-provider/target/*-provider-*.jar $PROJECT_HOME/abcd-provider/target/demo.jar
 
 echo "构建镜像"
 docker build -t $APP_NAME:v$VERSION .
